@@ -1,0 +1,7 @@
+hello
+syscall
+*.i
+*.o
+*.out
+*.exe
+hello.s
