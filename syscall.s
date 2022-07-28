@@ -1,6 +1,6 @@
 section .data
-	msg db "Hello world!", 0x0a
-	msglen equ ($ - msg)
+	msg: db "Hello world!", 0x0a
+	msglen: equ $ - msg         ; $:current(end), msg(start), len=end-start
 	
 section .text
 	global _start
@@ -27,5 +27,6 @@ section .text
 			mov  rax, 1			; rax: syscall -> write
 			syscall
 			
+			mov  rdi, 0         ; exit 0
 			mov  rax, 60		; rax: syscall -> exit
 			syscall
