@@ -1,1 +1,20 @@
-this repo includes some system call codes
+# This repo includes some system call codes.
+
+## hello.c
+system call write; man 2 write; unistd.h
+write(2, buff, strlen(buff)); 2: stderr
+gcc -c hello.c -o hello.o
+gcc hello.o -o hello  ||
+ld is too difficult. See the link info from gcc -v hello.o -o hello.
+ld is /usr/lib/gcc/x86_64-linux-gnu/11/collect2
+
+
+## syscall.s
+sys_call(rdi, rsi, rdx): rax
+nasm -f elf64 syscall.s -o syscall.o
+ld syscall.o -o syscall  ||
+gcc syscall.o -nostartfiles -e _start -o syscall  (-nostartfiles deprecates main, -e _start sets _start as entrance)
+
+
+## crop_video.py
+python call ffmpeg in windows
