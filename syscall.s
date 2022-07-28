@@ -1,3 +1,7 @@
+section .data
+	msg db "Hello world!", 0x0a
+	msglen equ ($ - msg)
+	
 section .text
 	global _start
 		_start:
@@ -8,14 +12,18 @@ section .text
 			;mov  rbx, 0x6f77206f6c6c6548
 			;push rbx
 			
-			sub  rsp, 16
-			mov  rbx, 0x6f77206f6c6c6548
-			mov  [rsp], rbx
-			mov  rbx, 0x0a21646c72
-			mov  [rsp + 8], rbx
+			;sub  rsp, 16
+			;mov  rbx, 0x6f77206f6c6c6548
+			;mov  [rsp], rbx
+			;mov  rbx, 0x0a21646c72
+			;mov  [rsp + 8], rbx
 
-			mov  rsi, rsp		; rsi: arg1
-			mov  rdx, 13		; rdx: arg2
+			;mov  rsi, rsp		; rsi: arg1
+			;mov  rdx, 13		; rdx: arg2
+			
+			mov  rsi, msg
+			mov  rdx, msglen
+			
 			mov  rax, 1			; rax: syscall -> write
 			syscall
 			
